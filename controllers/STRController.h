@@ -1,6 +1,7 @@
 #pragma once
 
 #include <drogon/HttpController.h>
+#include "RotterdamService.h"
 
 using namespace drogon;
 
@@ -12,6 +13,8 @@ class STRController : public drogon::HttpController<STRController>
     ADD_METHOD_TO(STRController::submitListings, "/api/v0/str/listings", Post);
     ADD_METHOD_TO(STRController::getAreas, "/api/v0/str/area", Get);
     ADD_METHOD_TO(STRController::downloadArea, "/api/v0/str/area/{id}", Get);
+    ADD_METHOD_TO(STRController::getRotterdamTestInfo, "/api/v0/str/rotterdam/{unitid}", Get);
+    ADD_METHOD_TO(STRController::getAmsterdamTestInfo, "/api/v0/str/amsterdam/{areaid}", Get);
     METHOD_LIST_END
     
 
@@ -27,4 +30,14 @@ class STRController : public drogon::HttpController<STRController>
     void downloadArea(const HttpRequestPtr &req,
                       std::function<void(const HttpResponsePtr &)> &&callback,
                       const std::string &id);
+
+    void getRotterdamTestInfo(const HttpRequestPtr &req,
+                      std::function<void(const HttpResponsePtr &)> &&callback,
+                      const std::string &unitid);
+
+
+    void getAmsterdamTestInfo(const HttpRequestPtr &req,
+                      std::function<void(const HttpResponsePtr &)> &&callback,
+                      const std::string &unitid);
+
 };
