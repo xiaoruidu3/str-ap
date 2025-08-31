@@ -1,10 +1,10 @@
 #include "HealthController.h"
 
 
-void HealthController::ping(const HttpRequestPtr &req,
-                            std::function<void(const HttpResponsePtr &)> &&callback) {
+void HealthController::ping(const drogon::HttpRequestPtr &req,
+                            std::function<void(const drogon::HttpResponsePtr &)> &&callback) {
     Json::Value result;
     result["status"] = "ok";
-    auto resp = HttpResponse::newHttpJsonResponse(result);
+    auto resp = drogon::HttpResponse::newHttpJsonResponse(result);
     callback(resp);
 }

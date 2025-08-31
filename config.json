@@ -378,5 +378,11 @@
         }
     ],
     //custom_config: custom configuration for users. This object can be get by the app().getCustomConfig() method.
-    "custom_config": {}
+    "custom_config": {
+        "auth0": {
+            "domain": "dev-r1vp841du8kzim0q.us.auth0.com",
+            "audience": "https://dev-r1vp841du8kzim0q.us.auth0.com/api/v2/",
+            "issuer": "https://dev-r1vp841du8kzim0q.us.auth0.com/"
+        }
+    }
 }

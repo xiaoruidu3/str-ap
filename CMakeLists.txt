@@ -23,13 +23,14 @@ add_executable(${PROJECT_NAME} main.cc)
 
 # ##############################################################################
 # If you include the drogon source code locally in your project, use this method
-# to add drogon 
-# add_subdirectory(drogon) 
+# to add drogon
+# add_subdirectory(drogon)
 # target_link_libraries(${PROJECT_NAME} PRIVATE drogon)
 #
 # and comment out the following lines
+find_package(jwt-cpp CONFIG REQUIRED)
 find_package(Drogon CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon)
+target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon jwt-cpp::jwt-cpp)
 
 # ##############################################################################
 
@@ -60,7 +61,8 @@ target_include_directories(${PROJECT_NAME}
                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
                                    ${CMAKE_CURRENT_SOURCE_DIR}/models
                                     ${CMAKE_CURRENT_SOURCE_DIR}/plugins
-                                    ${CMAKE_CURRENT_SOURCE_DIR}/dataType)
+                                    ${CMAKE_CURRENT_SOURCE_DIR}/dataType
+                                    ${CMAKE_CURRENT_SOURCE_DIR}/filters)
 target_sources(${PROJECT_NAME}
                PRIVATE
                ${SRC_DIR}

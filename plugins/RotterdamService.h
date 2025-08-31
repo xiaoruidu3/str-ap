@@ -5,7 +5,7 @@
 #include <drogon/orm/DbClient.h>
 #include <drogon/drogon.h>
 #include <drogon/orm/Exception.h>
-#include <drogon/orm/Result.h>
+
 
 class RotterdamService : public drogon::Plugin<RotterdamService>
 {
