@@ -5,7 +5,8 @@
 #include "Address.h"
 #include "Temporal.h"
 
-class GuestData {
+class GuestData
+{
 public:
     std::string unitId;
     std::string hostId;
@@ -15,14 +16,15 @@ public:
     Address address;
     Temporal temporal;
 
-    Json::Value toJson() const {
+    Json::Value toJson() const
+    {
         Json::Value json;
         json["unitId"] = unitId;
         if (!hostId.empty()) json["hostId"] = hostId;
         if (!areaId.empty()) json["areaId"] = areaId;
         if (numberOfGuests > 0) json["numberOfGuests"] = numberOfGuests;
 
-        for (const auto &c : countryOfGuests)
+        for (const auto& c : countryOfGuests)
             json["countryOfGuests"].append(c);
 
         json["address"] = address.toJson();
@@ -31,7 +33,8 @@ public:
         return json;
     }
 
-    void fromJson(const Json::Value &json) {
+    void fromJson(const Json::Value& json)
+    {
         if (json.isMember("unitId"))
             unitId = json["unitId"].asString();
         if (json.isMember("hostId"))
@@ -40,8 +43,9 @@ public:
             areaId = json["areaId"].asString();
         if (json.isMember("numberOfGuests"))
             numberOfGuests = json["numberOfGuests"].asInt();
-        if (json.isMember("countryOfGuests")) {
-            for (auto &item : json["countryOfGuests"])
+        if (json.isMember("countryOfGuests"))
+        {
+            for (auto& item : json["countryOfGuests"])
                 countryOfGuests.push_back(item.asString());
         }
         if (json.isMember("address"))

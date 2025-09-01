@@ -2,14 +2,16 @@
 #include <json/json.h>
 #include <string>
 
-class Metadata {
+class Metadata
+{
 public:
     std::string platform;
     std::string submissionDate;
 
-    Json::Value additionalProps;  // catch-all for any extra object properties
+    Json::Value additionalProps; // catch-all for any extra object properties
 
-    Json::Value toJson() const {
+    Json::Value toJson() const
+    {
         Json::Value json;
         if (!platform.empty())
             json["platform"] = platform;
@@ -20,7 +22,8 @@ public:
         return json;
     }
 
-    void fromJson(const Json::Value &json) {
+    void fromJson(const Json::Value& json)
+    {
         if (json.isMember("platform"))
             platform = json["platform"].asString();
         if (json.isMember("submissionDate"))

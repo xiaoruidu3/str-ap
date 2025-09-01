@@ -2,14 +2,16 @@
 #include <json/json.h>
 #include <string>
 
-class Address {
+class Address
+{
 public:
     std::string city;
     std::string country;
     std::string postalCode;
     std::string street;
 
-    Json::Value toJson() const {
+    Json::Value toJson() const
+    {
         Json::Value json;
         if (!city.empty()) json["city"] = city;
         if (!country.empty()) json["country"] = country;
@@ -18,7 +20,8 @@ public:
         return json;
     }
 
-    void fromJson(const Json::Value &json) {
+    void fromJson(const Json::Value& json)
+    {
         if (json.isMember("city")) city = json["city"].asString();
         if (json.isMember("country")) country = json["country"].asString();
         if (json.isMember("postalCode")) postalCode = json["postalCode"].asString();
